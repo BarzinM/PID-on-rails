@@ -1,7 +1,7 @@
 clc; clear all; close all
 
 %% Path setup
-path_step = transpose(.01:500);
+path_step = transpose(0:.01:500);
 x_path = path_step/17 + 2*sin(path_step/50);
 y_path = sqrt(path_step) + 5*sin(path_step/10);
 
@@ -60,7 +60,6 @@ title('Velocity Profile')
 xlabel('Simulation Step')
 ylabel('Velocity')
 plot(velocity,'LineWidth',3)
-waitforbuttonpress()
 hold on
 plot(actual_velocity, ':')
 hold off
@@ -87,7 +86,7 @@ h1 = plot(x_pos(1), y_pos(1), 'rx');
 h2 = plot(actual_position(1, 1), actual_position(1, 2), 'ko');
 legend('Path', 'Desired Position', 'Actual Position')
 disp('Press key ...')
-
+waitforbuttonpress()
 for sim_step=1:sim_time/time_step
     delete(h1)
     delete(h2)
